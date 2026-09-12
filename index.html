@@ -41,7 +41,7 @@
         /* Base & Scrollbar */
         body {
             font-family: 'Vazirmatn', sans-serif;
-            overflow: hidden; /* جلوگیری از اسکرول کل بادی، اسکرول روی بخش محتواست */
+            overflow: hidden; 
             background-color: var(--main-bg);
             color: var(--text-main);
             transition: background-color 0.4s ease, color 0.4s ease;
@@ -64,7 +64,7 @@
         html:not(.dark) {
             --card-bg: rgba(255, 255, 255, 0.7);
             --card-border: rgba(0, 0, 0, 0.08);
-            --main-bg: #f1f5f9; /* کمی روشن‌تر برای تضاد بهتر */
+            --main-bg: #f1f5f9; 
             --text-main: #1e293b;
             --text-muted: #475569;
         }
@@ -96,7 +96,7 @@
         .dark .bg-pattern {
             filter: invert(0);
             mix-blend-mode: screen;
-            opacity: 0.02; /* شفافیت کمتر برای جلوگیری از شلوغی */
+            opacity: 0.04;
         }
         
         /* Glass Cards */
@@ -106,15 +106,14 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-radius: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* سایه نرم‌تر */
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* ساده‌سازی ترانزیشن */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
         }
 
         /* Grid Layouts & Expanding Animation */
         .grid-container {
             display: grid;
             gap: 1.5rem;
-            /* ترانزیشن نرم‌تر برای جلوگیری از لگ */
             transition: grid-template-columns 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -129,8 +128,8 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
-            scroll-margin-top: 100px; /* فاصله از بالا برای اسکرول دقیق‌تر */
-            transition: transform 0.2s ease, box-shadow 0.2s ease; /* فقط برای هاور */
+            scroll-margin-top: 100px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; 
         }
 
         .expandable-card:hover:not(.is-focused) {
@@ -139,11 +138,11 @@
         }
 
         .expandable-card .card-content {
-            max-height: 120px; /* استفاده از max-height برای انیمیشن بهتر */
+            max-height: 120px; 
             overflow: hidden;
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-            transition: max-height 0.5s ease-in-out, mask-image 0.3s ease; /* انیمیشن نرم */
+            transition: max-height 0.5s ease-in-out, mask-image 0.3s ease; 
         }
 
         .expandable-card.is-focused {
@@ -151,7 +150,7 @@
         }
 
         .expandable-card.is-focused .card-content {
-            max-height: 2000px; /* عددی بزرگ برای باز شدن کامل */
+            max-height: 2000px; 
             mask-image: none;
             -webkit-mask-image: none;
         }
@@ -162,7 +161,7 @@
             top: 1.25rem;
             left: 1.25rem;
             opacity: 0;
-            visibility: hidden; /* در حالت عادی رندر نمیشود */
+            visibility: hidden; 
             transform: scale(0.8);
             transition: all 0.2s ease;
             z-index: 10;
@@ -176,8 +175,7 @@
 
         /* Layout & Transitions */
         #main-scroll {
-            transition: padding-right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* انیمیشن نرم‌تر */
-            /* فعال کردن اسکرول نرم برای کل محتوا */
+            transition: padding-right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
             scroll-behavior: smooth; 
         }
 
@@ -187,9 +185,9 @@
             top: 0;
             right: 0;
             height: 100vh;
-            width: 20rem; /* 320px */
+            width: 20rem; 
             transform: translateX(100%);
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* انیمیشن نرم‌تر */
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             z-index: 40;
             border-left: 1px solid var(--card-border);
         }
@@ -199,7 +197,50 @@
         }
         
         .section-intro {
-            scroll-margin-top: 80px; /* فاصله برای اسکرول به ابتدای بخش */
+            scroll-margin-top: 80px; 
+        }
+
+        /* Custom Slider Styling */
+        .custom-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+        }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid currentColor;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+            position: relative;
+            z-index: 10;
+            margin-top: -3px; /* تنظیم مکان عمودی دستگیره نسبت به محور نامرئی */
+        }
+        .custom-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: white;
+            border: 4px solid currentColor;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .custom-slider:hover::-webkit-slider-thumb {
+            transform: scale(1.2);
+        }
+        .custom-slider:hover::-moz-range-thumb {
+            transform: scale(1.2);
+        }
+        .custom-slider:focus {
+            outline: none;
         }
     </style>
 </head>
@@ -208,8 +249,6 @@
     <!-- Background Patterns -->
     <div class="bg-pattern"></div>
     
-    <!-- Orbs removed as requested -->
-
     <!-- Sidebar (Fixed) -->
     <aside id="sidebar" class="glass-card rounded-none flex flex-col shadow-2xl">
         <div class="p-6 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
@@ -217,7 +256,7 @@
                 <svg class="w-6 h-6 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 فهرست مطالب
             </h2>
-            <button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+            <button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors cursor-pointer">
                 <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
@@ -225,42 +264,42 @@
         <div class="p-4 flex-1 overflow-y-auto space-y-4">
             <!-- Nav Item 1 -->
             <div class="glass-card rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800/50">
-                <button onclick="toggleAccordion('acc-1', 'section-1')" class="w-full p-4 flex items-center justify-between text-brand-green hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                <button onclick="toggleAccordion('acc-1', 'section-1')" class="w-full p-4 flex items-center justify-between text-brand-green hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">
                     <span class="font-bold text-sm">۱. مدیریت راهبری سینماها</span>
                     <svg class="w-4 h-4 transform transition-transform" id="icon-acc-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div id="acc-1" class="hidden px-4 pb-4 space-y-2 text-sm">
-                    <button onclick="scrollToCard('s1-c1')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green">شناخت و ارزیابی جامع</button>
-                    <button onclick="scrollToCard('s1-c2')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green">ارتباط با مدیران</button>
-                    <button onclick="scrollToCard('s1-c3')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green">طراحی نظام پایش</button>
-                    <button onclick="scrollToCard('s1-c4')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green">استانداردسازی فرآیندها</button>
+                    <button onclick="scrollToCard('s1-c1')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green cursor-pointer">شناخت و ارزیابی جامع</button>
+                    <button onclick="scrollToCard('s1-c2')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green cursor-pointer">ارتباط با مدیران</button>
+                    <button onclick="scrollToCard('s1-c3')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green cursor-pointer">طراحی نظام پایش</button>
+                    <button onclick="scrollToCard('s1-c4')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-green transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-green cursor-pointer">استانداردسازی فرآیندها</button>
                 </div>
             </div>
 
             <!-- Nav Item 2 -->
             <div class="glass-card rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800/50">
-                <button onclick="toggleAccordion('acc-2', 'section-2')" class="w-full p-4 flex items-center justify-between text-brand-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                <button onclick="toggleAccordion('acc-2', 'section-2')" class="w-full p-4 flex items-center justify-between text-brand-blue hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">
                     <span class="font-bold text-sm">۲. مدیریت توسعه مخاطب</span>
                     <svg class="w-4 h-4 transform transition-transform" id="icon-acc-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div id="acc-2" class="hidden px-4 pb-4 space-y-2 text-sm">
-                    <button onclick="scrollToCard('s2-c1')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue">باشگاه مشتریان</button>
-                    <button onclick="scrollToCard('s2-c2')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue">مدل B2B باشگاه</button>
-                    <button onclick="scrollToCard('s2-c3')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue">توسعه از مسیر مدارس</button>
-                    <button onclick="scrollToCard('s2-c4')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue">نظام‌مند کردن رویدادها</button>
+                    <button onclick="scrollToCard('s2-c1')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue cursor-pointer">باشگاه مشتریان</button>
+                    <button onclick="scrollToCard('s2-c2')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue cursor-pointer">مدل B2B باشگاه</button>
+                    <button onclick="scrollToCard('s2-c3')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue cursor-pointer">توسعه از مسیر مدارس</button>
+                    <button onclick="scrollToCard('s2-c4')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-blue transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-blue cursor-pointer">نظام‌مند کردن رویدادها</button>
                 </div>
             </div>
 
             <!-- Nav Item 3 -->
             <div class="glass-card rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800/50">
-                <button onclick="toggleAccordion('acc-3', 'section-3')" class="w-full p-4 flex items-center justify-between text-brand-purple hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                <button onclick="toggleAccordion('acc-3', 'section-3')" class="w-full p-4 flex items-center justify-between text-brand-purple hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">
                     <span class="font-bold text-sm">۳. رشد و ارتقاء کیفی</span>
                     <svg class="w-4 h-4 transform transition-transform" id="icon-acc-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div id="acc-3" class="hidden px-4 pb-4 space-y-2 text-sm">
-                    <button onclick="scrollToCard('s3-c1')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-purple transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-purple">چارچوب استانداردسازی</button>
-                    <button onclick="scrollToCard('s3-c2')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-purple transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-purple">پروتکل تجربه مخاطب</button>
-                    <button onclick="scrollToCard('s3-c3')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-purple transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-purple">نیازسنجی آموزشی</button>
+                    <button onclick="scrollToCard('s3-c1')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-purple transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-purple cursor-pointer">چارچوب استانداردسازی</button>
+                    <button onclick="scrollToCard('s3-c2')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-purple transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-purple cursor-pointer">پروتکل تجربه مخاطب</button>
+                    <button onclick="scrollToCard('s3-c3')" class="w-full text-right py-1 text-gray-600 dark:text-gray-400 hover:text-brand-purple transition-colors flex items-center gap-2 before:content-['•'] before:text-brand-purple cursor-pointer">نیازسنجی آموزشی</button>
                 </div>
             </div>
         </div>
@@ -272,7 +311,7 @@
         <!-- Sticky Header -->
         <header class="sticky top-0 z-30 glass-card rounded-none border-t-0 border-x-0 px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <button onclick="toggleSidebar()" class="p-2 bg-gray-200 dark:bg-gray-800/80 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors shadow-sm">
+                <button onclick="toggleSidebar()" class="p-2 bg-gray-200 dark:bg-gray-800/80 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors shadow-sm cursor-pointer">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
                 <!-- Dynamic Header Title -->
@@ -286,7 +325,7 @@
                 </div>
             </div>
             
-            <button onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 dark:bg-gray-800/80 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors shadow-sm">
+            <button onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 dark:bg-gray-800/80 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors shadow-sm cursor-pointer">
                 <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                 </svg>
@@ -297,16 +336,57 @@
 
             <!-- بخش اول: مدیریت راهبری -->
             <section id="section-1" class="space-y-8 section-intro">
-                <div class="glass-card p-6 md:p-8 text-center max-w-3xl mx-auto border-t-4 border-t-brand-green">
-                    <p class="text-base md:text-lg leading-relaxed opacity-90">
-                        هدف این مدیریت در دوره «شناخت و پایه‌گذاری»، ایجاد شناخت جامع و داده‌محور از وضعیت سینماهای شبکه، شناسایی ظرفیت‌ها، مسائل و اولویت‌های هر مجموعه، تقویت ارتباط مستقیم با مدیران و ایجاد چارچوب اولیه برای پایش و راهبری یکپارچه شبکه است.
-                    </p>
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <div class="glass-card p-6 md:p-8 flex-1 border-t-4 border-t-brand-green relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <h2 class="text-xl font-bold text-brand-green mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            درباره این مدیریت
+                        </h2>
+                        <p class="text-base leading-relaxed opacity-90 relative z-10">
+                            هدف این مدیریت در دوره «شناخت و پایه‌گذاری»، ایجاد شناخت جامع و داده‌محور از وضعیت سینماهای شبکه، شناسایی ظرفیت‌ها، مسائل و اولویت‌های هر مجموعه، تقویت ارتباط مستقیم با مدیران و ایجاد چارچوب اولیه برای پایش و راهبری یکپارچه شبکه است.
+                        </p>
+                        
+                        <!-- نوار پیشرفت متحرک (اسلایدر) -->
+                        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                            <div class="flex items-center justify-between gap-4 w-full bg-gray-100 dark:bg-gray-800/50 p-2.5 rounded-2xl border border-gray-200 dark:border-gray-700/50">
+                                <span class="text-sm font-bold text-brand-green whitespace-nowrap px-2 hidden sm:block">پیشرفت پروژه</span>
+                                
+                                <!-- Slider Container -->
+                                <div class="relative w-full flex items-center h-6 group">
+                                    <!-- Background Track -->
+                                    <div class="absolute w-full bg-gray-300 dark:bg-gray-900 rounded-full h-2.5 shadow-inner pointer-events-none"></div>
+                                    <!-- Fill Track (Animated by JS) -->
+                                    <div id="progress-fill-1" class="absolute h-2.5 rounded-full pointer-events-none bg-brand-green transition-all duration-150 ease-out" style="width: 45%;"></div>
+                                    
+                                    <!-- The Range Input -->
+                                    <input type="range" min="0" max="100" value="45" class="w-full absolute h-6 z-10 m-0 text-brand-green custom-slider cursor-pointer" oninput="updateProgress(1, this.value)">
+                                </div>
+
+                                <div class="flex items-center justify-center gap-1.5 text-sm font-bold bg-white dark:bg-gray-800 text-brand-green px-4 py-2 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 shrink-0 w-20">
+                                    <span id="progress-text-1" dir="ltr">45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- کارت عملیات و اقدامات -->
+                    <div class="glass-card p-6 md:p-8 lg:w-1/3 flex flex-col justify-center items-center text-center hover:-translate-y-1 transition-transform cursor-pointer" onclick="showDevToast()">
+                        <div class="w-16 h-16 mx-auto bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green mb-6 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">مدیریت عملیات و اقدامات</h3>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800/50 text-sm font-bold text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700/50 shadow-sm">
+                            <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            این پنل در حال توسعه می‌باشد
+                        </span>
+                    </div>
                 </div>
 
                 <div class="grid-container" id="grid-1">
                     <!-- کارت ۱ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s1-c1" onclick="focusCard(this, 'grid-1')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-1')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-1')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-6 flex items-center gap-3">
@@ -343,7 +423,7 @@
 
                     <!-- کارت ۲ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s1-c2" onclick="focusCard(this, 'grid-1')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-1')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-1')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-6 flex items-center gap-3">
@@ -378,7 +458,7 @@
 
                     <!-- کارت ۳ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s1-c3" onclick="focusCard(this, 'grid-1')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-1')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-1')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-6 flex items-center gap-3">
@@ -413,7 +493,7 @@
 
                     <!-- کارت ۴ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s1-c4" onclick="focusCard(this, 'grid-1')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-1')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-1')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-6 flex items-center gap-3">
@@ -450,16 +530,57 @@
 
             <!-- بخش دوم: توسعه مخاطب -->
             <section id="section-2" class="space-y-8 section-intro">
-                <div class="glass-card p-6 md:p-8 text-center max-w-3xl mx-auto border-t-4 border-t-brand-blue">
-                    <p class="text-base md:text-lg leading-relaxed opacity-90">
-                        هدف این مدیریت در دوره «شناخت و پایه‌گذاری»، ایجاد زیرساخت‌های اولیه توسعه مخاطب، شناسایی و فعال‌سازی ظرفیت‌های جدید جذب مخاطب و طراحی مسیرهای پایدار برای ارتباط و تعامل با مخاطبان شبکه سینماهای بهمن سبز است.
-                    </p>
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <div class="glass-card p-6 md:p-8 flex-1 border-t-4 border-t-brand-blue relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <h2 class="text-xl font-bold text-brand-blue mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            درباره این مدیریت
+                        </h2>
+                        <p class="text-base leading-relaxed opacity-90 relative z-10">
+                            هدف این مدیریت در دوره «شناخت و پایه‌گذاری»، ایجاد زیرساخت‌های اولیه توسعه مخاطب، شناسایی و فعال‌سازی ظرفیت‌های جدید جذب مخاطب و طراحی مسیرهای پایدار برای ارتباط و تعامل با مخاطبان شبکه سینماهای بهمن سبز است.
+                        </p>
+                        
+                        <!-- نوار پیشرفت מתحرک (اسلایدر) -->
+                        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                            <div class="flex items-center justify-between gap-4 w-full bg-gray-100 dark:bg-gray-800/50 p-2.5 rounded-2xl border border-gray-200 dark:border-gray-700/50">
+                                <span class="text-sm font-bold text-brand-blue whitespace-nowrap px-2 hidden sm:block">پیشرفت پروژه</span>
+                                
+                                <!-- Slider Container -->
+                                <div class="relative w-full flex items-center h-6 group">
+                                    <!-- Background Track -->
+                                    <div class="absolute w-full bg-gray-300 dark:bg-gray-900 rounded-full h-2.5 shadow-inner pointer-events-none"></div>
+                                    <!-- Fill Track (Animated by JS) -->
+                                    <div id="progress-fill-2" class="absolute h-2.5 rounded-full pointer-events-none bg-brand-blue transition-all duration-150 ease-out" style="width: 20%;"></div>
+                                    
+                                    <!-- The Range Input -->
+                                    <input type="range" min="0" max="100" value="20" class="w-full absolute h-6 z-10 m-0 text-brand-blue custom-slider cursor-pointer" oninput="updateProgress(2, this.value)">
+                                </div>
+
+                                <div class="flex items-center justify-center gap-1.5 text-sm font-bold bg-white dark:bg-gray-800 text-brand-blue px-4 py-2 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 shrink-0 w-20">
+                                    <span id="progress-text-2" dir="ltr">20%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- کارت عملیات و اقدامات -->
+                    <div class="glass-card p-6 md:p-8 lg:w-1/3 flex flex-col justify-center items-center text-center hover:-translate-y-1 transition-transform cursor-pointer" onclick="showDevToast()">
+                        <div class="w-16 h-16 mx-auto bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue mb-6 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">مدیریت عملیات و اقدامات</h3>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800/50 text-sm font-bold text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700/50 shadow-sm">
+                            <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            این پنل در حال توسعه می‌باشد
+                        </span>
+                    </div>
                 </div>
 
                 <div class="grid-container" id="grid-2">
                     <!-- کارت ۱ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s2-c1" onclick="focusCard(this, 'grid-2')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-2')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-2')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-blue mb-6 flex items-center gap-3">
@@ -492,7 +613,7 @@
 
                     <!-- کارت ۲ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s2-c2" onclick="focusCard(this, 'grid-2')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-2')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-2')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-blue mb-6 flex items-center gap-3">
@@ -525,7 +646,7 @@
 
                     <!-- کارت ۳ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s2-c3" onclick="focusCard(this, 'grid-2')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-2')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-2')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-blue mb-6 flex items-center gap-3">
@@ -558,7 +679,7 @@
 
                     <!-- کارت ۴ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s2-c4" onclick="focusCard(this, 'grid-2')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-2')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-2')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-blue mb-6 flex items-center gap-3">
@@ -595,19 +716,60 @@
 
             <!-- بخش سوم: رشد و ارتقاء کیفی -->
             <section id="section-3" class="space-y-8 section-intro">
-                <div class="glass-card p-6 md:p-8 text-center max-w-3xl mx-auto border-t-4 border-t-brand-purple">
-                    <p class="text-base md:text-lg leading-relaxed opacity-90 mb-4">
-                        با توجه به اینکه این مدیریت در مقطع فعلی فاقد سرپرست مستقل است، اقدامات این حوزه در دوره «شناخت و پایه‌گذاری» به‌صورت بین‌بخشی و با مشارکت مدیریت‌های مرتبط دنبال خواهد شد.
-                    </p>
-                    <p class="text-md leading-relaxed opacity-80 text-brand-purple font-medium">
-                        هدف: ایجاد مبنای مشترک برای استانداردسازی، ارتقای تجربه مخاطب و شناسایی نیازهای آموزشی.
-                    </p>
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <div class="glass-card p-6 md:p-8 flex-1 border-t-4 border-t-brand-purple relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <h2 class="text-xl font-bold text-brand-purple mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            درباره این مدیریت
+                        </h2>
+                        <p class="text-base leading-relaxed opacity-90 mb-4 relative z-10">
+                            با توجه به اینکه این مدیریت در مقطع فعلی فاقد سرپرست مستقل است، اقدامات این حوزه در دوره «شناخت و پایه‌گذاری» به‌صورت بین‌بخشی و با مشارکت مدیریت‌های مرتبط دنبال خواهد شد.
+                        </p>
+                        <p class="text-md leading-relaxed opacity-80 text-brand-purple font-medium relative z-10">
+                            هدف: ایجاد مبنای مشترک برای استانداردسازی، ارتقای تجربه مخاطب و شناسایی نیازهای آموزشی.
+                        </p>
+                        
+                        <!-- نوار پیشرفت متحرک (اسلایدر) -->
+                        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+                            <div class="flex items-center justify-between gap-4 w-full bg-gray-100 dark:bg-gray-800/50 p-2.5 rounded-2xl border border-gray-200 dark:border-gray-700/50">
+                                <span class="text-sm font-bold text-brand-purple whitespace-nowrap px-2 hidden sm:block">پیشرفت پروژه</span>
+                                
+                                <!-- Slider Container -->
+                                <div class="relative w-full flex items-center h-6 group">
+                                    <!-- Background Track -->
+                                    <div class="absolute w-full bg-gray-300 dark:bg-gray-900 rounded-full h-2.5 shadow-inner pointer-events-none"></div>
+                                    <!-- Fill Track (Animated by JS) -->
+                                    <div id="progress-fill-3" class="absolute h-2.5 rounded-full pointer-events-none bg-brand-purple transition-all duration-150 ease-out" style="width: 10%;"></div>
+                                    
+                                    <!-- The Range Input -->
+                                    <input type="range" min="0" max="100" value="10" class="w-full absolute h-6 z-10 m-0 text-brand-purple custom-slider cursor-pointer" oninput="updateProgress(3, this.value)">
+                                </div>
+
+                                <div class="flex items-center justify-center gap-1.5 text-sm font-bold bg-white dark:bg-gray-800 text-brand-purple px-4 py-2 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 shrink-0 w-20">
+                                    <span id="progress-text-3" dir="ltr">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- کارت عملیات و اقدامات -->
+                    <div class="glass-card p-6 md:p-8 lg:w-1/3 flex flex-col justify-center items-center text-center hover:-translate-y-1 transition-transform cursor-pointer" onclick="showDevToast()">
+                        <div class="w-16 h-16 mx-auto bg-brand-purple/10 rounded-2xl flex items-center justify-center text-brand-purple mb-6 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">مدیریت عملیات و اقدامات</h3>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800/50 text-sm font-bold text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700/50 shadow-sm">
+                            <svg class="w-4 h-4 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            این پنل در حال توسعه می‌باشد
+                        </span>
+                    </div>
                 </div>
 
                 <div class="grid-container" id="grid-3">
                     <!-- کارت ۱ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s3-c1" onclick="focusCard(this, 'grid-3')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-3')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-3')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-purple mb-6 flex items-center gap-3">
@@ -640,7 +802,7 @@
 
                     <!-- کارت ۲ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s3-c2" onclick="focusCard(this, 'grid-3')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-3')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-3')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-purple mb-6 flex items-center gap-3">
@@ -674,7 +836,7 @@
 
                     <!-- کارت ۳ -->
                     <div class="glass-card p-6 md:p-8 expandable-card" id="s3-c3" onclick="focusCard(this, 'grid-3')">
-                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md" onclick="event.stopPropagation(); unfocusCard('grid-3')">
+                        <button class="close-btn text-gray-500 hover:text-red-500 bg-gray-200 dark:bg-gray-800 rounded-full p-2 shadow-md cursor-pointer" onclick="event.stopPropagation(); unfocusCard('grid-3')">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         <h3 class="text-xl md:text-2xl font-bold text-brand-purple mb-6 flex items-center gap-3">
@@ -710,6 +872,12 @@
         </div>
     </main>
 
+    <!-- Toast Notification -->
+    <div id="dev-toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 translate-y-20 opacity-0 z-50 pointer-events-none">
+        <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        <span class="font-bold text-sm">این پنل در حال توسعه می‌باشد</span>
+    </div>
+
     <script>
         // Sidebar Toggle & Main Resize Logic
         const sidebar = document.getElementById('sidebar');
@@ -720,7 +888,6 @@
             isSidebarOpen = !isSidebarOpen;
             if(isSidebarOpen) {
                 sidebar.classList.add('open');
-                // در دسکتاپ محتوا را فشار میدهد
                 if(window.innerWidth > 768) {
                     mainScroll.style.paddingRight = '20rem';
                 }
@@ -767,10 +934,8 @@
             const card = document.getElementById(cardId);
             const gridId = card.parentElement.id;
             
-            // فوکوس کردن کارت
             focusCard(card, gridId);
             
-            // بستن سایدبار در موبایل
             if (window.innerWidth <= 768) {
                 toggleSidebar();
             }
@@ -778,7 +943,6 @@
 
         // Card Focus Logic
         function focusCard(clickedCard, gridId) {
-            // اگر قبلا فوکوس بوده، خروج از فوکوس
             if(clickedCard.classList.contains('is-focused')) {
                 return unfocusCard(gridId);
             }
@@ -787,15 +951,11 @@
             const cardsArray = Array.from(grid.children);
             const index = cardsArray.indexOf(clickedCard);
             
-            // حذف فوکوس قبلی
             unfocusCard(gridId);
             
-            // اضافه کردن فوکوس به کارت کلیک شده
             clickedCard.classList.add('is-focused');
             
-            // منطق ریسایز ستون‌ها در دسکتاپ
             if (window.innerWidth >= 768) {
-                // کارت‌های 0 و 2 در ستون راست، 1 و 3 در ستون چپ هستند (به دلیل rtl)
                 if (index % 2 === 0) {
                     grid.classList.add('focus-right');
                 } else {
@@ -803,7 +963,6 @@
                 }
             }
 
-            // اسکرول به خود کارت بعد از اعمال انیمیشن
             setTimeout(() => {
                 clickedCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100); 
@@ -815,6 +974,26 @@
             
             cards.forEach(card => card.classList.remove('is-focused'));
             grid.classList.remove('focus-right', 'focus-left');
+        }
+
+        // Slider Progress Logic
+        function updateProgress(sectionId, value) {
+            const fillBar = document.getElementById('progress-fill-' + sectionId);
+            const progressText = document.getElementById('progress-text-' + sectionId);
+            
+            if (fillBar && progressText) {
+                fillBar.style.width = value + '%';
+                progressText.innerText = value + '%';
+            }
+        }
+
+        // Toast Logic
+        function showDevToast() {
+            const toast = document.getElementById('dev-toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
         }
 
         // Dynamic Header Title Update using Intersection Observer
@@ -877,6 +1056,63 @@
                 }
             }
         });
+
+        // --- Google Sheets Backend Integration ---
+        const GOOGLE_APP_SCRIPT_URL = ""; 
+
+        async function fetchDashboardData() {
+            if (!GOOGLE_APP_SCRIPT_URL) return;
+
+            try {
+                const headerTitle = document.getElementById('dynamic-header-title');
+                const originalTitle = headerTitle.textContent;
+                headerTitle.textContent = "در حال همگام‌سازی با شیت...";
+
+                const response = await fetch(GOOGLE_APP_SCRIPT_URL);
+                const data = await response.json();
+
+                if(data.intros && data.intros.length > 0) {
+                    const introElements = document.querySelectorAll('.section-intro > div > p:first-of-type');
+                    introElements.forEach((el, index) => {
+                        if(data.intros[index]) el.textContent = data.intros[index];
+                    });
+                }
+
+                if(data.cards && data.cards.length > 0) {
+                    const cardElements = document.querySelectorAll('.expandable-card');
+                    cardElements.forEach((card, index) => {
+                        const sheetCard = data.cards[index];
+                        if(!sheetCard) return;
+
+                        const titleEl = card.querySelector('h3');
+                        if(titleEl && sheetCard.title) {
+                            const span = titleEl.querySelector('span'); 
+                            titleEl.innerHTML = '';
+                            if(span) titleEl.appendChild(span);
+                            titleEl.appendChild(document.createTextNode(' ' + sheetCard.title));
+                        }
+
+                        const ulEl = card.querySelector('.card-content ul');
+                        if(ulEl && sheetCard.actions) {
+                            const actionsList = sheetCard.actions.split('\n').filter(a => a.trim() !== '');
+                            ulEl.innerHTML = actionsList.map(a => `<li class="relative pl-4 before:content-[''] before:absolute before:right-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-current opacity-90 leading-relaxed">${a}</li>`).join('');
+                        }
+
+                        const achieveEl = card.querySelector('.card-content > div:nth-child(2) p');
+                        if(achieveEl && sheetCard.achievement) {
+                            achieveEl.textContent = sheetCard.achievement;
+                        }
+                    });
+                }
+                
+                headerTitle.textContent = originalTitle;
+
+            } catch (error) {
+                console.error("خطا در دریافت اطلاعات از گوگل شیت:", error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', fetchDashboardData);
     </script>
 </body>
 </html>
